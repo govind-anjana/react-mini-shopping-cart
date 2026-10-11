@@ -1,5 +1,12 @@
 
-import React from "react";
+const productIcons = {
+  Laptop: "💻",
+  Mouse: "🖱️",
+  LCD: "🖥️",
+  Keyboard: "⌨️",
+  "Keyboard Protector": "🛡️",
+  "Touch Pad": "🔲",
+};
 
 const ProductCard = (props) => {
   const totalVal = props.item.price * props.item.quantity;
@@ -11,17 +18,7 @@ const ProductCard = (props) => {
       <div className="flex items-start justify-between gap-4">
         <div className="flex min-w-0 items-center gap-4">
           <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-400/15 bg-cyan-400/10 text-2xl transition group-hover:bg-cyan-400/15">
-            {props.item.name === "Laptop"
-              ? "💻"
-              : props.item.name === "Mouse"
-              ? "🖱️"
-              : props.item.name === "LCD"
-              ? "🖥️"
-              : props.item.name === "KeyBoard"
-              ? "⌨️"
-              : props.item.name === "Touch Pad"
-              ? "🔲"
-              : "🎧"}
+            {productIcons[props.item.name] || "🛍️"}
           </div>
 
           <div className="min-w-0">
@@ -57,7 +54,7 @@ const ProductCard = (props) => {
               onClick={() => props.decreaseQuantity(props.item.id)}
               disabled={props.item.quantity <= 1}
               aria-label={`Decrease ${props.item.name} quantity`}
-              className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-lg text-white transition hover:border-cyan-400/50 hover:bg-cyan-400/10 disabled:cursor-not-allowed disabled:opacity-30"
+              className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-lg text-white transition hover:border-cyan-400/50 hover:bg-cyan-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#151F32] disabled:cursor-not-allowed disabled:opacity-30"
             >
               −
             </button>
@@ -69,7 +66,7 @@ const ProductCard = (props) => {
             <button
               onClick={() => props.increaseQuantity(props.item.id)}
               aria-label={`Increase ${props.item.name} quantity`}
-              className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-400 text-lg font-bold text-slate-950 transition hover:bg-cyan-300 active:scale-95"
+              className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-400 text-lg font-bold text-slate-950 transition hover:bg-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#151F32] active:scale-95"
             >
               +
             </button>
@@ -90,7 +87,7 @@ const ProductCard = (props) => {
       <div className="mt-5 flex justify-end">
         <button
           onClick={() => props.removeItem(props.item.id)}
-          className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-slate-400 transition hover:bg-red-400/10 hover:text-red-400"
+          className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-slate-400 transition hover:bg-red-400/10 hover:text-red-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#151F32]"
         >
           <span aria-hidden="true">✕</span>
           Remove item
@@ -101,4 +98,3 @@ const ProductCard = (props) => {
 };
 
 export default ProductCard;
-

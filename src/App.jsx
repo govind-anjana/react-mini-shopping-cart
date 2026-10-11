@@ -1,14 +1,14 @@
 
-import React, { useState } from "react";
+import { useState } from "react";
 import ShoppingList from "./components/ShoppingList";
 
 const App = () => {
   const [items, setItems] = useState([
     { id: 1, name: "Mouse", price: 20, quantity: 1 },
     { id: 2, name: "Laptop", price: 800, quantity: 1 },
-    { id: 3, name: "KeyBoard", price: 16, quantity: 1 },
+    { id: 3, name: "Keyboard", price: 16, quantity: 1 },
     { id: 4, name: "LCD", price: 400, quantity: 1 },
-    { id: 5, name: "KeyBoard Protector", price: 50, quantity: 1 },
+    { id: 5, name: "Keyboard Protector", price: 50, quantity: 1 },
     { id: 6, name: "Touch Pad", price: 90, quantity: 1 },
   ]);
 
@@ -46,7 +46,10 @@ const App = () => {
       {/* Header */}
       <header className="border-b border-white/10 bg-[#0B1220]">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8">
-          <a href="/" className="text-2xl font-black tracking-wider">
+          <a
+            href="/"
+            className="rounded-sm text-2xl font-black tracking-wider focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-4 focus-visible:ring-offset-[#0B1220]"
+          >
             NEXORA<span className="text-cyan-400">.</span>
           </a>
 
@@ -95,7 +98,7 @@ const App = () => {
                 <h2 className="text-lg font-semibold">Your Items</h2>
 
                 <span className="text-sm text-slate-400">
-                  {items.length} products
+                  {items.length} {items.length === 1 ? "product" : "products"}
                 </span>
               </div>
 
@@ -144,7 +147,7 @@ const App = () => {
               <button
                 disabled={items.length === 0}
                 onClick={() => alert("Checkout feature coming soon!")}
-                className="mt-7 w-full rounded-xl bg-cyan-400 px-5 py-4 font-bold text-slate-950 transition duration-300 hover:bg-cyan-300 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
+                className="mt-7 w-full rounded-xl bg-cyan-400 px-5 py-4 font-bold text-slate-950 transition duration-300 hover:bg-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111A2A] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Proceed to Checkout
                 <span className="ml-2">→</span>
